@@ -91,3 +91,57 @@ def check_budget_breach(cumulative_spending, budget):
         print(f"   Cumulative spending: {cumulative_spending:.2f}")
         print(f"   Budget: {budget:.2f}")
         print(f"   Deficit: {deficit:.2f}\n")
+
+def generate_summary(budget, transactions):
+    """
+    Generate and display a comprehensive financial summary report.
+    
+    This function creates the final terminal report that includes:
+    - The initial budget that was set
+    - The total sum of all recorded expenses
+    - The resulting financial position (remaining balance or deficit)
+    - A consolidated textual log itemizing each transaction
+    
+    Args:
+        budget (float): The initial budget set by the user
+        transactions (list): List of tuples containing (description, amount) for each transaction
+    """
+    # Calculate total expenses by summing all transaction amounts
+    # Using list comprehension: extract amount (second element) from each transaction tuple
+    total_expenses = sum(amount for _, amount in transactions)
+    
+    # Calculate financial position: positive = remaining balance, negative = deficit
+    financial_position = budget - total_expenses
+    
+    # Print report header with decorative separator
+    print("\n" + "="*60)
+    print("FINANCIAL SUMMARY REPORT")
+    print("="*60)
+    
+    # Display key financial metrics
+    print(f"\nInitial Budget: {budget:.2f}")
+    print(f"Total Expenses: {total_expenses:.2f}")
+    
+    # Display remaining balance if under budget, or deficit if over budget
+    if financial_position >= 0:
+        print(f"Remaining Balance: {financial_position:.2f}")
+    else:
+        # Use abs() to show deficit as a positive number for clarity
+        print(f"Deficit Amount: {abs(financial_position):.2f}")
+    
+    # Print transaction log section
+    print("\n" + "-"*60)
+    print("TRANSACTION LOG")
+    print("-"*60)
+    
+    # Display each transaction with a numbered list
+    if transactions:
+        # enumerate() provides index (starting at 1) and transaction tuple
+        for i, (description, amount) in enumerate(transactions, 1):
+            print(f"{i}. {description}: {amount:.2f}")
+    else:
+        # Handle edge case where no transactions were entered
+        print("No transactions recorded.")
+    
+    # Print footer separator
+    print("="*60 + "\n")
