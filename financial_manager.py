@@ -1,4 +1,13 @@
+"""
+Personal Financial Management Tool
+A command-line utility for campus students to track expenses against a budget.
 
+This program implements four core functionalities:
+1. Budget initialization - Set a spending limit
+2. Transaction logging - Record expenses with descriptions
+3. Real-time fiscal oversight - Monitor spending and warn of budget breaches
+4. Final financial summary - Generate comprehensive report
+"""
 def initialize_budget():
     
     # Use a while loop to keep asking until valid input is received
