@@ -68,3 +68,26 @@ def log_transaction(transaction_number):
         except ValueError:
             # Handle non-numeric input gracefully
             print("Invalid input. Please enter a valid numerical value.")
+
+def check_budget_breach(cumulative_spending, budget):
+    """
+    Check if cumulative spending exceeds the budget.
+    
+    This function implements real-time fiscal oversight by checking immediately
+    after each transaction whether the cumulative spending has exceeded the budget.
+    If breached, it issues a clear warning notification to the user.
+    
+    Args:
+        cumulative_spending (float): The total of all expenses entered so far
+        budget (float): The initial budget limit set by the user
+    """
+    # Check if spending has exceeded the budget
+    if cumulative_spending > budget:
+        # Calculate how much over budget the user is
+        deficit = cumulative_spending - budget
+        
+        # Display warning message with detailed information
+        print(f"\n⚠️  WARNING: Budget exceeded by {deficit:.2f}!")
+        print(f"   Cumulative spending: {cumulative_spending:.2f}")
+        print(f"   Budget: {budget:.2f}")
+        print(f"   Deficit: {deficit:.2f}\n")
