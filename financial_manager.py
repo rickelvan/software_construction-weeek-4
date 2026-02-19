@@ -145,3 +145,44 @@ def generate_summary(budget, transactions):
     
     # Print footer separator
     print("="*60 + "\n")
+
+def main():
+    """
+    Main function to run the financial management program.
+    
+    This function orchestrates the entire program flow:
+    1. Initialize budget
+    2. Log transactions (minimum 5 for testing)
+    3. Provide real-time fiscal oversight
+    4. Generate final summary report
+    """
+    # Display welcome message
+    print("="*60)
+    print("PERSONAL FINANCIAL MANAGEMENT TOOL")
+    print("Track your spending and stay within your limits!")
+    print("="*60)
+    
+    # ============================================================
+    # STEP 1: Budget Initialization
+    # ============================================================
+    # Get budget from user (must be non-negative)
+    budget = initialize_budget()
+    print(f"\nBudget set to: {budget:.2f}")
+    
+    # ============================================================
+    # STEP 2: Transaction Logging
+    # ============================================================
+    # Initialize list to store all transactions as tuples (description, amount)
+    transactions = []
+    
+    # Track cumulative spending to check against budget in real-time
+    cumulative_spending = 0.0
+    
+    # Display transaction logging section header
+    print("\n" + "-"*60)
+    print("TRANSACTION LOGGING")
+    print("Enter at least 5 transactions (or type 'done' to finish)")
+    print("-"*60)
+    
+    # Counter to track transaction sequence numbers
+    transaction_count = 0
